@@ -1,5 +1,8 @@
 require 'json'
+require 'logdna'
 
+logger = LogDNA::RubyLogger.new("62724bb68e694f4cbf8047a0c1f628cb", "https://logdnatestracingapi.herokuapp.com")
+logger.level = LogDNA::LEVELS[0]
 
 MyApp.add_route('POST', '/racingTracks', {
   "resourcePath" => "/Default",
@@ -18,7 +21,12 @@ MyApp.add_route('POST', '/racingTracks', {
     ]}) do
   cross_origin
   # the guts live here
-
+  puts "post racingeTracks logger"
+  logger.debug {"Debug"}
+  logger.info {"Info"}
+  logger.warn {"Warn"}
+  logger.error {"Error"}
+  logger.fatal {"Fatal"}
   {"message" => "yes, it worked"}.to_json
 end
 
