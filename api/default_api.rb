@@ -1,5 +1,30 @@
 require 'json'
+require 'geocoder'
 
+# config/initializers/geocoder.rb
+Geocoder.configure(
+  # geocoding service:
+  :lookup => :google,
+
+  # IP address geocoding service:
+  :ip_lookup => :maxmind,
+
+  # to use an API key:
+  :api_key => 'AIzaSyAfTjdechLjnh-BHmP3kWwGiSFis5u-pms',
+
+  # this is very important option for configuring geocoder with API key
+  :use_https => true,
+
+  # geocoding service request timeout, in seconds (default 3):
+  :timeout => 3,
+
+  # set default units to kilometers:
+  :units => :km,
+  
+  :http_proxy => ENV['QUOTAGUARD_URL'],
+  
+  :timeout => 5
+)
 
 MyApp.add_route('POST', '/racingTracks', {
   "resourcePath" => "/Default",
@@ -155,6 +180,10 @@ MyApp.add_route('POST', '/racingTracks/{id}/positions', {
     
     puts latitude
     puts longitude
+    puts Geocoder.search("Moscow")
+    puts ""
+    puts ""
+    
     {"Addresse" => "Soon Schwaigaustraße irgendwos"}.to_json
   end
 end
