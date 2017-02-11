@@ -155,6 +155,7 @@ MyApp.add_route('POST', '/racingTracks/{id}/positions', {
     
     puts latitude
     puts longitude
+    {"Addresse" => "Soon Schwaigaustraße irgendwos"}.to_json
   end
 end
 
