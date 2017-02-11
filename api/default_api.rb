@@ -22,7 +22,7 @@ MyApp.add_route('POST', '/racingTracks', {
   cross_origin
   # the guts live here
   puts "post racingeTracks logger"
-  #logger.debug {"Debug"}
+  logger.debug {"Debug"}
   #logger.info {"Info"}
   #logger.warn {"Warn"}
   #logger.error {"Error"}
