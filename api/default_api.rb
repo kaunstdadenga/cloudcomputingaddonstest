@@ -1,8 +1,10 @@
 require 'json'
 require 'logdna'
 
-logger = LogDNA::RubyLogger.new("62724bb68e694f4cbf8047a0c1f628cb", "https://logdnatestracingapi.herokuapp.com")
-logger.level = LogDNA::LEVELS[0]
+#logger = LogDNA::RubyLogger.new("62724bb68e694f4cbf8047a0c1f628cb", "https://logdnatestracingapi.herokuapp.com")
+#logger.level = LogDNA::LEVELS[0]
+logger = Logger.new(STDOUT)
+logger.level = Logger::DEBUG
 
 MyApp.add_route('POST', '/racingTracks', {
   "resourcePath" => "/Default",
