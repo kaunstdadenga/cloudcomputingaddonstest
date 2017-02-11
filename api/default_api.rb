@@ -137,7 +137,24 @@ MyApp.add_route('POST', '/racingTracks/{id}/positions', {
     ]}) do
   cross_origin
   # the guts live here
+  
+  begin
+    body = JSON.parse(request.body.read)
+  rescue JSON::ParserError, ArgumentError => e
+    puts(e)
+    return error(400, "Parameter not valid.")
+  end
 
-  {"message" => "yes, it worked"}.to_json
+  position = body["position"]
+
+  if position.nil? then
+    error(400, "Parameter not valid.")
+  else
+    latitude = position["latitude"]
+    longitude = position["longitude"]
+    
+    puts latitude
+    puts longitude
+  end
 end
 
