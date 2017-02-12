@@ -187,7 +187,7 @@ MyApp.add_route('POST', '/racingTracks/{id}/positions', {
     puts ""
     puts ""
     
-    {"Addresse" => "Soon Schwaigaustraße irgendwos"}.to_json
+    {"Addresse" => "#{result.first.data['formatted_address']}"}.to_json
   end
 end
 
