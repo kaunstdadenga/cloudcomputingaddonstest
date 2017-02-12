@@ -180,7 +180,10 @@ MyApp.add_route('POST', '/racingTracks/{id}/positions', {
     
     puts latitude
     puts longitude
-    puts Geocoder.search("Moscow")
+    result = Geocoder.search("#{latitude},#{longitude}")
+    puts result.first.data['formatted_address']
+    #street = result[0].data['address']['road']
+    #puts street
     puts ""
     puts ""
     
