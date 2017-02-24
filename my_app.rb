@@ -1,4 +1,5 @@
 require './lib/swaggering'
+require 'newrelic_rpm'
 
 # only need to extend if you want special configuration!
 class MyApp < Swaggering
@@ -11,3 +12,4 @@ end
 Dir["./api/*.rb"].each { |file|
   require file
 }
+
